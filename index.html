@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smit Dalvi — Data Science student & content creator, Mumbai</title>
+<meta name="description" content="Portfolio of Smit Dalvi, MBA Tech Data Science student at NMIMS Mumbai. Social media, creative work, gym and driving.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --asphalt:#0F1E24; --dial:#173039; --line:#2A4650;
+  --amber:#FFB347; --ivory:#F3EBDD; --muted:#9DB3B8; --needle:#FF5A4F;
+  --display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;
+  --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--asphalt);color:var(--ivory);font:400 1.0625rem/1.65 var(--body);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);line-height:.95;font-weight:800}
+h2{font-size:clamp(2.4rem,7vw,4rem);margin-bottom:1.5rem}
+p{max-width:62ch}
+
+/* header */
+header{position:sticky;top:0;z-index:5;background:rgba(15,30,36,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding:.8rem 0}
+.logo{font:800 1.4rem var(--display);text-decoration:none;letter-spacing:.02em}
+nav{display:flex;gap:1.25rem}
+nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--amber)}
+
+/* hero */
+.hero{padding:clamp(2rem,6vw,5rem) 0 4rem}
+.hero .wrap{display:grid;gap:2.5rem;grid-template-columns:1.05fr .95fr;align-items:center}
+.hero h1{font-size:clamp(4.2rem,15vw,9rem);letter-spacing:-.01em}
+.hero h1 span{color:var(--amber)}
+.tag{font-size:1.2rem;color:var(--muted);margin:1.25rem 0 1.75rem}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;padding:.75rem 1.4rem;border-radius:999px;border:1.5px solid var(--amber);text-decoration:none;font-weight:600;cursor:pointer;background:none;color:var(--ivory);font-family:var(--body);font-size:1rem}
+.btn.fill{background:var(--amber);color:var(--asphalt)}
+.btn:hover{transform:translateY(-2px)}
+
+/* gauge */
+.cluster{background:radial-gradient(circle at 50% 40%,var(--dial),#0C181D 75%);border:1px solid var(--line);border-radius:28px;padding:1.5rem 1.25rem 1.25rem;text-align:center}
+.gauge{position:relative;width:min(300px,100%);margin:0 auto}
+.gauge svg{width:100%;display:block}
+.track{fill:none;stroke:var(--line);stroke-width:12;stroke-linecap:round;stroke-dasharray:397.9 597;transform:rotate(150deg);transform-origin:120px 120px}
+.fill{fill:none}
+circle.arc{fill:none;stroke:var(--amber);stroke-width:12;stroke-linecap:round;transform:rotate(150deg);transform-origin:120px 120px;transition:stroke-dasharray 1.1s cubic-bezier(.2,.8,.2,1)}
+.needle{stroke:var(--needle);stroke-width:3;stroke-linecap:round;transform-origin:120px 120px;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.read{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:3.2rem;pointer-events:none}
+.read b{font:800 2.6rem/1 var(--display);color:var(--amber)}
+.read small{font-size:.8rem;color:var(--muted)}
+.caption{min-height:3.4em;margin:.75rem auto 1rem;max-width:34ch;color:var(--ivory)}
+.modes{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
+.modes button{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:.45rem 1rem;font:500 .95rem var(--body);cursor:pointer}
+.modes button[aria-pressed=true]{background:var(--amber);border-color:var(--amber);color:var(--asphalt);font-weight:600}
+.hint{font-size:.85rem;color:var(--muted);margin-top:.9rem}
+
+/* sections */
+section{padding:4.5rem 0;border-top:1px solid var(--line)}
+.about{display:grid;gap:2.5rem;grid-template-columns:1fr 1fr}
+.about h3{font-size:1.7rem;color:var(--amber);margin-bottom:.5rem}
+.about p+h3{margin-top:1.5rem}
+.facts{list-style:none;padding:0;display:grid;gap:.9rem;align-content:start}
+.facts li{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dashed var(--line);padding-bottom:.7rem}
+.facts span{color:var(--muted)}
+.facts b{font-weight:600;text-align:right}
+
+.route{display:grid;grid-template-columns:8.5rem 1fr;gap:1.5rem;padding:1.75rem 0;border-bottom:1px solid var(--line)}
+.route:first-of-type{border-top:1px solid var(--line)}
+.status{font:700 1rem var(--display);letter-spacing:.04em;color:var(--asphalt);background:var(--amber);align-self:start;justify-self:start;padding:.2rem .7rem;border-radius:6px}
+.status.plan{background:none;color:var(--amber);border:1.5px dashed var(--amber)}
+.route h3{font-size:2rem;margin-bottom:.6rem}
+.route ul{margin:.8rem 0 0;padding-left:1.2rem;color:var(--muted)}
+
+.skills{display:grid;gap:2rem;grid-template-columns:repeat(3,1fr)}
+.skills h3{font-size:1.6rem;margin-bottom:.8rem;color:var(--amber)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0}
+.chips li{border:1px solid var(--line);border-radius:999px;padding:.3rem .85rem;font-size:.95rem}
+
+.contact{text-align:left}
+.mail{display:block;font:800 clamp(1.6rem,6vw,3.6rem)/1.1 var(--display);color:var(--amber);text-decoration:none;word-break:break-word;margin:1rem 0 1.5rem}
+.mail:hover{text-decoration:underline}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.toast{position:fixed;left:50%;bottom:1.5rem;transform:translate(-50%,200%);background:var(--amber);color:var(--asphalt);padding:.6rem 1.2rem;border-radius:999px;font-weight:600;transition:transform .3s}
+.toast.on{transform:translate(-50%,0)}
+
+@media (max-width:820px){
+  .hero .wrap,.about,.skills{grid-template-columns:1fr}
+  .route{grid-template-columns:1fr;gap:.75rem}
+  nav{gap:.9rem}
+  nav a{font-size:.88rem}
+}
+@media (max-width:420px){nav a:nth-child(2){display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">SD</a>
+    <nav aria-label="Main">
+      <a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Smit<br><span>Dalvi</span></h1>
+      <p class="tag">Data science student at NMIMS Mumbai. I run on the gym, the open road and a creative brain that never switches off.</p>
+      <div class="btns">
+        <a class="btn fill" href="#work">See my work</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="cluster" aria-label="Interactive gauge: pick a mode to see what drives me">
+      <div class="gauge">
+        <svg viewBox="0 0 240 240" role="img" aria-hidden="true">
+          <circle class="track" cx="120" cy="120" r="95"/>
+          <circle class="arc" id="arc" cx="120" cy="120" r="95" stroke-dasharray="0 597"/>
+          <g id="ticks" stroke="#9DB3B8" stroke-width="2"></g>
+          <line class="needle" id="needle" x1="120" y1="120" x2="120" y2="48" style="transform:rotate(-120deg)"/>
+          <circle cx="120" cy="120" r="9" fill="#FF5A4F"/>
+        </svg>
+        <div class="read"><b id="modeName">GYM</b><small>current mode</small></div>
+      </div>
+      <p class="caption" id="caption" aria-live="polite"></p>
+      <div class="modes" id="modes" role="group" aria-label="Modes"></div>
+      <p class="hint">Tap a mode to move the needle.</p>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <div class="about">
+      <div>
+        <p>I’m Smit, an MBA Tech student specialising in Data Science at NMIMS Mumbai. I like numbers, but I like what people do with them even more.</p>
+        <h3>What I care about</h3>
+        <p>Consistency. Whether it’s a workout, a content calendar or a semester, the people who keep turning up are the ones who get somewhere. I also believe in enjoying life along the way, so there’s always room for a long drive and good music.</p>
+        <h3>What I’m building towards</h3>
+        <p>A career where data and creativity work together: understanding an audience through the numbers, then making something they actually want to watch.</p>
+      </div>
+      <ul class="facts">
+        <li><span>Studying</span><b>MBA Tech, Data Science</b></li>
+        <li><span>College</span><b>NMIMS, Mumbai</b></li>
+        <li><span>Day to day</span><b>Gym, driving, content</b></li>
+        <li><span>Main interest</span><b>Social media management</b></li>
+        <li><span>Motto</span><b>Be consistent. Enjoy life.</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Work</h2>
+    <article class="route">
+      <span class="status">Ongoing</span>
+      <div>
+        <h3>Social media management</h3>
+        <p>Planning, designing and posting content for social media. This is where my creative side gets to work: deciding what a post should say, how it should look and when it should go out.</p>
+        <ul><li>Content ideas and captions</li><li>Visual design for posts and stories</li><li>Posting schedule and consistency</li></ul>
+      </div>
+    </article>
+    <article class="route">
+      <span class="status">Studying</span>
+      <div>
+        <h3>Data science coursework</h3>
+        <p>My degree covers statistics, programming and databases, with a focus on turning raw data into decisions a business can use. I’m still early in this, so I’d rather build real things than claim more than I know.</p>
+        <ul><li>Python and statistics</li><li>SQL and databases</li><li>Data visualisation</li></ul>
+      </div>
+    </article>
+    <article class="route">
+      <span class="status plan">Next build</span>
+      <div>
+        <h3>My own gym log, with data</h3>
+        <p>A small project that joins my two worlds: logging my training and using Python to see whether my consistency is really what I think it is. Not built yet, but it’s the next thing on my list.</p>
+        <ul><li>Track sessions and lifts</li><li>Chart streaks and progress</li></ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills & interests</h2>
+    <div class="skills">
+      <div><h3>Analyse</h3><ul class="chips"><li>Python</li><li>SQL</li><li>Statistics</li><li>Excel</li></ul></div>
+      <div><h3>Create</h3><ul class="chips"><li>Social media</li><li>Content ideas</li><li>Graphic design</li><li>Storytelling</li></ul></div>
+      <div><h3>Live</h3><ul class="chips"><li>Gym</li><li>Driving</li><li>Music</li><li>Staying consistent</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Want to collaborate, talk content or just say hi? Email is the quickest way.</p>
+    <a class="mail" id="mail" href="#contact">Loading email…</a>
+    <div class="btns">
+      <button class="btn fill" id="copy" type="button">Copy email</button>
+      <a class="btn" id="li" href="#" target="_blank" rel="noopener" hidden>LinkedIn</a>
+      <a class="btn" id="ig" href="#" target="_blank" rel="noopener" hidden>Instagram</a>
+      <a class="btn" id="gh" href="#" target="_blank" rel="noopener" hidden>GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Smit Dalvi · Mumbai, India</span><a href="#top">Back to top</a></div></footer>
+<div class="toast" id="toast" role="status">Email copied</div>
+
+<script>
+/* ===== EDIT THESE ===== */
+const EMAIL = "your.email@gmail.com";   // <- put your real email
+const LINKS = { li: "", ig: "", gh: "" }; // <- paste full URLs; empty ones stay hidden
+/* ====================== */
+
+const MODES = [
+  {n:"GYM",    p:.92, t:"Showing up beats motivation. I train to stay consistent, not to look good for a week."},
+  {n:"DRIVE",  p:.62, t:"Windows down, music on. Driving is how I reset my head."},
+  {n:"CREATE", p:.80, t:"I plan, design and post content for social media. It’s my favourite kind of work."},
+  {n:"DATA",   p:.50, t:"MBA Tech in Data Science at NMIMS Mumbai. I like finding the pattern behind the numbers."}
+];
+const arc=document.getElementById('arc'), needle=document.getElementById('needle'),
+      nameEl=document.getElementById('modeName'), cap=document.getElementById('caption'),
+      box=document.getElementById('modes');
+
+const ticks=document.getElementById('ticks');
+for(let i=0;i<=12;i++){
+  const a=(-120+i*20)*Math.PI/180, long=i%3===0, r1=long?70:76, r2=84;
+  const l=document.createElementNS('http://www.w3.org/2000/svg','line');
+  l.setAttribute('x1',120+r1*Math.sin(a)); l.setAttribute('y1',120-r1*Math.cos(a));
+  l.setAttribute('x2',120+r2*Math.sin(a)); l.setAttribute('y2',120-r2*Math.cos(a));
+  if(long) l.setAttribute('stroke-width',3);
+  ticks.appendChild(l);
+}
+
+function setMode(i){
+  const m=MODES[i];
+  needle.style.transform='rotate('+(-120+240*m.p)+'deg)';
+  arc.setAttribute('stroke-dasharray',(397.9*m.p).toFixed(1)+' 597');
+  nameEl.textContent=m.n; cap.textContent=m.t;
+  [...box.children].forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
+}
+MODES.forEach((m,i)=>{
+  const b=document.createElement('button');
+  b.type='button'; b.textContent=m.n.charAt(0)+m.n.slice(1).toLowerCase();
+  b.onclick=()=>setMode(i); box.appendChild(b);
+});
+cap.textContent=MODES[0].t; nameEl.textContent=MODES[0].n;
+setTimeout(()=>setMode(0),350);
+
+/* contact */
+const mail=document.getElementById('mail');
+mail.href='mailto:'+EMAIL; mail.textContent=EMAIL;
+for(const k in LINKS){ const a=document.getElementById(k); if(LINKS[k]){a.href=LINKS[k];a.hidden=false;} }
+const toast=document.getElementById('toast');
+document.getElementById('copy').onclick=async()=>{
+  try{ await navigator.clipboard.writeText(EMAIL); toast.textContent='Email copied'; }
+  catch(e){ toast.textContent='Copy failed, select the email above'; }
+  toast.classList.add('on'); setTimeout(()=>toast.classList.remove('on'),1800);
+};
+</script>
+</body>
+</html>
